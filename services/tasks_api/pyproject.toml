@@ -10,7 +10,7 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 version = "0.1.0"
 description = "Task API"
 
-dependencies = ["fastapi", "uvicorn[standard]", "httpx"]
+dependencies = ["fastapi", "uvicorn[standard]", "httpx", "mangum"]
 
 [project.optional-dependencies]
 dev = [
