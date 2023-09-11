@@ -18,7 +18,7 @@ dev = [
     "pytest-cov",
     "black",
     "isort",
-    "flake8",
+    "ruff",
     "bandit"
 ]
 
