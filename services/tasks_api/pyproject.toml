@@ -10,7 +10,7 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 version = "0.1.0"
 description = "Task API"
 
-dependencies = ["fastapi", "uvicorn[standard]", "httpx", "mangum"]
+dependencies = ["fastapi", "uvicorn[standard]", "httpx", "mangum", "boto3"]
 
 [project.optional-dependencies]
 dev = [
@@ -19,7 +19,9 @@ dev = [
     "black",
     "isort",
     "ruff",
-    "bandit"
+    "bandit",
+    "moto",
+    "boto3-stubs[dynamodb]"
 ]
 
 [tool.ruff]
