@@ -4,8 +4,8 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "tasks_api"
-authors = [{name = "Anders Bogsnes", email = "anders.bogsnes@gmail.com"}]
-license = {file = "LICENSE"}
+authors = [{ name = "Anders Bogsnes", email = "anders.bogsnes@gmail.com" }]
+license = { file = "LICENSE" }
 classifiers = ["License :: OSI Approved :: MIT License"]
 version = "0.1.0"
 description = "Task API"
@@ -20,4 +20,22 @@ dev = [
     "isort",
     "flake8",
     "bandit"
+]
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".git",
+    "build",
+    "dist",
+    "venv",
+]
+src = ["src"]
+
+select = [
+    "E",
+    "F",
+    "UP",
+    "PL",
+    "RUF"
 ]

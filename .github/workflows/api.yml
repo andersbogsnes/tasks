@@ -1,0 +1,32 @@
+name: API Test and Deploy
+on:
+  push:
+    paths:
+      - 'services/tasks_api/**'
+      - '.github/workflows/api.yml'
+jobs:
+  code-quality:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ 3.11 ]
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: services/tasks_api
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install ".[dev]"
+      - name: Run black
+        run: black . --check
+      - name: Run isort
+        run: isort . --check-only
+      - name: Run ruff
+        run: ruff .
+      - name: Run bandit
+        run: run bandit .

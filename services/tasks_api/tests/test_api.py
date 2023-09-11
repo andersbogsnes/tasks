@@ -9,6 +9,7 @@ from tasks_api import app
 def client() -> TestClient:
     return TestClient(app)
 
+
 def test_healthcheck(client: TestClient):
     response = client.get("/api/health")
     assert response.status_code == status.HTTP_200_OK
