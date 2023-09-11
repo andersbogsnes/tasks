@@ -16,4 +16,5 @@ app.add_middleware(
 def health():
     return {"message": "OK"}
 
+
 handle = Mangum(app)
