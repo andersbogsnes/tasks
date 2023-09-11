@@ -9,3 +9,15 @@ license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 version = "0.1.0"
 description = "Task API"
+
+dependencies = ["fastapi", "uvicorn[standard]", "httpx"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "isort",
+    "flake8",
+    "bandit"
+]
