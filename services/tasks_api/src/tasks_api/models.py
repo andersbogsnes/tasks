@@ -3,9 +3,11 @@ from enum import StrEnum
 from typing import Self
 from uuid import UUID
 
+
 class TaskStatus(StrEnum):
     OPEN = "OPEN"
     CLOSED = "CLOSED"
+
 
 @dataclass
 class Task:
