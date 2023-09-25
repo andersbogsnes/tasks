@@ -71,9 +71,11 @@ def close_task(
     task_store.add(task)
     return task
 
+
 @app.get("/api/closed-tasks", response_model=APITaskList)
 def closed_tasks(user_email: Annotated[str, Depends(get_user_email)],
                  task_store: Annotated[TaskStore, Depends(get_task_store)]):
     return APITaskList(results=task_store.list_closed(owner=user_email))
+
 
 handle = Mangum(app)
