@@ -12,10 +12,11 @@ from tasks_api.models import Task, TaskStatus
 @dataclass
 class TaskStore:
     table_name: str
+    dynamodb_url: str | None = None
 
     @property
-    def dynamodb(self):
-        return boto3.resource("dynamodb")
+    def dynamodb(self) -> DynamoDBServiceResource:
+        return boto3.resource("dynamodb", endpoint_url=self.dynamodb_url)
 
     def add(self, task: Task) -> None:
         table = self.dynamodb.Table(self.table_name)

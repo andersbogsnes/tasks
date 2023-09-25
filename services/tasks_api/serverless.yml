@@ -40,6 +40,13 @@ functions:
           cors:
             origin: ${env:ALLOWED_ORIGINS}
             maxAge: 60
+          authorizer:
+            name: TasksAPIAuthorizer
+            type: COGNITO_USER_POOLS
+            arn:
+              Fn::GetAtt:
+                - CognitoUserPool
+                - Arn
 
 custom:
   pythonRequirements:
@@ -48,8 +55,18 @@ custom:
       - botocore
   stage: ${opt:stage, self:provider.stage}
   tableName: ${self:custom.stage}-tasks-api
+
+package:
+  patterns:
+    - '!venv/**'
+    - '!README.md'
+    - '!.pytest_cache/**'
+    - '!.ruff_cache/**'
+    - '!.node_modules/**'
+
 plugins:
   - serverless-python-requirements
 
 resources:
+  - ${file(resources/cognito.yml)}
   - ${file(resources/dynamodb.yaml)}
