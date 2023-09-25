@@ -10,7 +10,7 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 version = "0.1.0"
 description = "Task API"
 
-dependencies = ["fastapi", "uvicorn[standard]", "httpx", "mangum", "boto3"]
+dependencies = ["fastapi", "uvicorn[standard]", "httpx", "mangum", "boto3", "pyjwt", "pydantic-settings"]
 
 [project.optional-dependencies]
 dev = [
