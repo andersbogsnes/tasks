@@ -11,8 +11,8 @@ plugins:
   - serverless-s3-sync
 
 custom:
-  stage: ${opt.stage, self:provider.stage}
-  bucketName: ${self:custom.stage}-tasks-api
+  stage: ${opt:stage, self:provider.stage}
+  bucketName: ${self:custom.stage}-tasks-api-anders
   s3Sync:
     - bucketName: ${self:custom.bucketName}
       localDir: dist

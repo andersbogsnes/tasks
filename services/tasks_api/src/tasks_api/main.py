@@ -2,13 +2,13 @@ import uuid
 from typing import Annotated
 
 import jwt
-from fastapi import FastAPI, Header, status, Depends
+from fastapi import Depends, FastAPI, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from tasks_api.config import Config
 from tasks_api.models import Task
-from tasks_api.schemas import APITask, CreateTask, APITaskList, CloseTask
+from tasks_api.schemas import APITask, APITaskList, CloseTask, CreateTask
 from tasks_api.store import TaskStore
 
 app = FastAPI()
@@ -73,8 +73,10 @@ def close_task(
 
 
 @app.get("/api/closed-tasks", response_model=APITaskList)
-def closed_tasks(user_email: Annotated[str, Depends(get_user_email)],
-                 task_store: Annotated[TaskStore, Depends(get_task_store)]):
+def closed_tasks(
+    user_email: Annotated[str, Depends(get_user_email)],
+    task_store: Annotated[TaskStore, Depends(get_task_store)],
+):
     return APITaskList(results=task_store.list_closed(owner=user_email))
 
 

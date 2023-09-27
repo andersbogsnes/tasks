@@ -10,6 +10,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: eu-north-1
   APP_ENVIRONMENT: development
+  VITE_VUE_APP_API_URL: https://9ectcmab5j.execute-api.eu-north-1.amazonaws.com/development/api
 
 
 jobs:
